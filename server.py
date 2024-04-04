@@ -6,6 +6,10 @@ import base64
 from bson import json_util, ObjectId
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI()
 
@@ -16,7 +20,7 @@ class Idcls(BaseModel):
 class Datecls(BaseModel):
     date : str
 
-CONNECTION_STRING = "mongodb+srv://m_nikhil_n:Nikhil@miniproject-2.chfsax2.mongodb.net/?retryWrites=true&w=majority"
+CONNECTION_STRING = os.getenv('MONGODB_URL')
 client = MongoClient(CONNECTION_STRING)
 db = client['MajorProject']
 collection = db['Live']
