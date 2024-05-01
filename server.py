@@ -111,6 +111,15 @@ async def fetch_imageonly(body: Idcls):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
+@app.post('/delete')
+async def fetch_imageonly(body: Idcls):
+    try:
+        data = collection.delete_one({"_id": ObjectId(body.id)})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get('/')
 async def data():
     return "BlackWingBackend"
