@@ -113,7 +113,7 @@ async def fetch_imageonly(body: Idcls):
 
 
 @app.post('/delete')
-async def fetch_imageonly(body: Idcls):
+async def delete_img(body: Idcls):
     try:
         data = collection.delete_one({"_id": ObjectId(body.id)})
     except Exception as e:
